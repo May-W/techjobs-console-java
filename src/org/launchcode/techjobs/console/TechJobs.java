@@ -1,8 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -111,6 +109,26 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.size() != 0) {
+            //need to use an if statment to make sure there are results of the search
+            System.out.println("*****");
+
+            for (int i = 0; i < someJobs.size(); i++) {
+                //based on https://stackoverflow.com/questions/15979828/loop-through-an-arraylist-of-hashmaps-java
+                HashMap<String, String> tempHash = (HashMap<String, String>) someJobs.get(i);
+                Set<String> key = tempHash.keySet();
+                Iterator it = key.iterator();
+                while (it.hasNext()) {
+                    String sjKey = (String) it.next();
+                    String sjValue = (String) tempHash.get(sjKey);
+
+                    System.out.println(sjKey + ": " + sjValue);
+                    it.remove();
+                }
+                System.out.println("*****");
+            }
+        } else {
+            System.out.println("No Jobs Found");
+        }
     }
 }

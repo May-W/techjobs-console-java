@@ -123,7 +123,6 @@ public class TechJobs {
                     String sjValue = (String) tempHash.get(sjKey);
 
                     System.out.println(sjKey + ": " + sjValue);
-                    it.remove();
                 }
                 System.out.println("*****");
             }

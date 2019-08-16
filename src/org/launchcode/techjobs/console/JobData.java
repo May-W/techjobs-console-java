@@ -15,7 +15,6 @@ import java.util.List;
  * Created by LaunchCode
  */
 public class JobData {
-
     private static final String DATA_FILE = "resources/job_data.csv";
     private static Boolean isDataLoaded = false;
 
@@ -78,6 +77,25 @@ public class JobData {
 
             if (aValue.contains(value)) {
                 jobs.add(row);
+            }
+        }
+
+        return jobs;
+    }
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+
+            for (String aValue: row.values()) {
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                    break;
+                }
             }
         }
 
